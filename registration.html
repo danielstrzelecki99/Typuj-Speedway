@@ -6,17 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
 </head>
 <body>
     <div class="wrapper">
-        <section class="form login">
+        <section class="form registration">
             <header>Speedway typer 2022</header>
             <form action="#">
                 <div class="registration_error">Podano błędne dane</div>
+                <div class="user_name_details">
+                    <div class="field input">
+                        <label>Imię</label>
+                        <input type="text" placeholder="Podaj imię">
+                    </div>
+                    <div class="field input">
+                        <label>Nazwisko</label>
+                        <input type="text" placeholder="Podaj nazwisko">
+                    </div>
+                </div>
                     <div class="field input">
                         <label>Email</label>
                         <input type="text" placeholder="Podaj email">
@@ -25,10 +32,14 @@
                         <label>Hasło</label>
                         <input type="password" placeholder="Podaj hasło">
                     </div>
+                    <div class="field image">
+                        <label>Wybierz awatar</label>
+                        <input type="file">
+                    </div>
                     <div class="field button">
-                        <input type="submit" value="Zaloguj">
+                        <input type="submit" value="Rejestruj">
                     </div> 
-                    <div class="link">Nie masz konta? <a href="registration.html">Zarejestruj się!</a></div>   
+                    <div class="link">Masz już konto? <a href="Index.html">Zaloguj się!</a></div>   
             </form>
         </section>
     </div>
