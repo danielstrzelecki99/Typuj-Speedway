@@ -12,15 +12,6 @@
         ];
         $dane = filter_input_array(INPUT_POST, $args);
         $errors = "";
-            if (is_uploaded_file($_FILES['awatar']['tmp_name'])) {
-                $typ = $_FILES['awatar']['type'];
-                if ($typ === 'image/jpeg') {
-                    move_uploaded_file($_FILES['awatar']['tmp_name'],'./awatary/'.$dane['email']);
-                }
-                else{
-                    header("Location: registration.html");
-                }
-            }
         foreach ($dane as $key => $val) {
             if ($val === false or $val === NULL) {
                 $errors .= $key . " ";
@@ -28,9 +19,20 @@
         }
         
         if ($errors === "") {
+            $avatarImg = "";
+            if (is_uploaded_file($_FILES['awatar']['tmp_name'])) {
+                $typ = $_FILES['awatar']['type'];
+                if ($typ === 'image/jpeg' || $typ === 'image/jpeg' || $typ === 'image/png') {
+                    move_uploaded_file($_FILES['awatar']['tmp_name'],'./awatary/'.$dane['email']);
+                    $avatarImg = "./awatary/".$dane['email'];
+                }
+                else{
+                    header("Location: registration.html");
+                }
+            }
             $date = new DateTime();
             $date = $date->format('Y-m-d H:i:s');
-            if($bd->insert("INSERT INTO users VALUES (NULL, '".$dane['name']."', '".$dane['surname']."', '".$dane['email']."', '".password_hash($dane['password'], PASSWORD_DEFAULT)."', '$date', './awatary/".$dane['email']."')")){
+            if($bd->insert("INSERT INTO users VALUES (NULL, '".$dane['name']."', '".$dane['surname']."', '".$dane['email']."', '".password_hash($dane['password'], PASSWORD_DEFAULT)."', '$date', '$avatarImg')")){
                 echo "Zarejestrowano pomyślnie";
             }
             else{
