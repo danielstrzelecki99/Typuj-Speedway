@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <meta charset="UTF-8">
@@ -14,8 +14,9 @@
     <div class="wrapper">
         <section class="form registration">
             <header>Speedway typer 2022</header>
-            <form action="rejestruj.php" method="POST" enctype="multipart/form-data" ></form>
-            <form action="#" onsubmit="return sprawdzRejstracje()">
+            <!-- <form action="rejestruj.php" method="POST" enctype="multipart/form-data"></form> -->
+            <form action="rejestruj.php" method="POST" enctype="multipart/form-data"
+                onsubmit="return sprawdzRejstracje()">
                 <div id="registration_error">Podano błędne dane</div>
                 <div class="user_name_details">
                     <div class="field input">
@@ -36,7 +37,8 @@
                     <input type="email" placeholder="Podaj email" name="email" id="email">
                 </div>
                 <div class="field input">
-                    <label>Hasło (Musi zawierać conajmniej 1 mała literę, 1 dużą literę, znak specjalny i cyfrę. Minimalna długość 8.)</label>
+                    <label>Hasło (Musi zawierać conajmniej 1 mała literę, 1 dużą literę, znak specjalny i cyfrę.
+                        Minimalna długość 8.)</label>
                     <input type="password" placeholder="Podaj hasło" name="password" id="password">
                 </div>
                 <div class="field image">
@@ -52,4 +54,5 @@
     </div>
     <script src="js/validation.js"></script>
 </body>
+
 </html>
