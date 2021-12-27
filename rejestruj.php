@@ -3,6 +3,8 @@
     $bd = new Baza("localhost", "root", "", "typuj-speedway");
     if(filter_input(INPUT_POST, "register")){
         $args = [
+            'userName' => ['filter' => FILTER_VALIDATE_REGEXP,
+            'options' => ['regexp' => '/^[a-zA-Z0-9]{1,15}$/']],
             'name' => ['filter' => FILTER_VALIDATE_REGEXP,
             'options' => ['regexp' => '/^[A-Za-ząęłńśćźżó]{2,25}$/']],
             'surname' => ['filter' => FILTER_VALIDATE_REGEXP,
@@ -22,7 +24,7 @@
             $avatarImg = "";
             if (is_uploaded_file($_FILES['awatar']['tmp_name'])) {
                 $typ = $_FILES['awatar']['type'];
-                if ($typ === 'image/jpeg' || $typ === 'image/jpeg' || $typ === 'image/png') {
+                if ($typ === 'image/jpeg' || $typ === 'image/jpg' || $typ === 'image/png' || $typ === 'image/gif' || $typ === 'image/bmp') {
                     move_uploaded_file($_FILES['awatar']['tmp_name'],'./awatary/'.$dane['email']);
                     $avatarImg = "./awatary/".$dane['email'];
                 }
@@ -32,7 +34,7 @@
             }
             $date = new DateTime();
             $date = $date->format('Y-m-d H:i:s');
-            if($bd->insert("INSERT INTO users VALUES (NULL, '".$dane['name']."', '".$dane['surname']."', '".$dane['email']."', '".password_hash($dane['password'], PASSWORD_DEFAULT)."', '$date', '$avatarImg')")){
+            if($bd->insert("INSERT INTO users VALUES (NULL, '".$dane['userName']."','".$dane['name']."', '".$dane['surname']."', '".$dane['email']."', '".password_hash($dane['password'], PASSWORD_DEFAULT)."', '$date', '$avatarImg')")){
                 echo "Zarejestrowano pomyślnie";
             }
             else{
@@ -44,3 +46,18 @@
         }
     }
 ?>
+
+<!-- CREATE TABLE IF NOT EXISTS `users` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`userName` varchar(100) NOT NULL,
+`name` varchar(255) NOT NULL,
+`surname` varchar(100) NOT NULL,
+`email` varchar(255) NOT NULL,
+`password` varchar(255) NOT NULL,
+`date` datetime NOT NULL,
+`avatarImg` varchar(255) NOT NULL,
+PRIMARY KEY (`id`),
+UNIQUE KEY `userName`
+(`userName`,`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+AUTO_INCREMENT=1 ; -->
