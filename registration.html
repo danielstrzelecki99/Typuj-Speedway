@@ -14,29 +14,34 @@
     <div class="wrapper">
         <section class="form registration">
             <header>Speedway typer 2022</header>
-            <form action="rejestruj.php" method="POST" enctype="multipart/form-data">
-                <div class="registration_error">Podano błędne dane</div>
+            <form action="rejestruj.php" method="POST" enctype="multipart/form-data" ></form>
+            <form action="#" onsubmit="return sprawdzRejstracje()">
+                <div id="registration_error">Podano błędne dane</div>
                 <div class="user_name_details">
                     <div class="field input">
                         <label>Imię</label>
-                        <input type="text" placeholder="Podaj imię" name="name">
+                        <input type="text" placeholder="Podaj imię" name="name" id="name">
                     </div>
                     <div class="field input">
                         <label>Nazwisko</label>
-                        <input type="text" placeholder="Podaj nazwisko" name="surname">
+                        <input type="text" placeholder="Podaj nazwisko" name="surname" id="surname">
                     </div>
                 </div>
                 <div class="field input">
-                    <label>Email</label>
-                    <input type="text" placeholder="Podaj email" name="email">
+                    <label>Nazwa użytkownika</label>
+                    <input type="text" placeholder="Podaj nazwę użytkownika" name="userName" id="userName">
                 </div>
                 <div class="field input">
-                    <label>Hasło</label>
-                    <input type="password" placeholder="Podaj hasło" name="password">
+                    <label>Email</label>
+                    <input type="email" placeholder="Podaj email" name="email" id="email">
+                </div>
+                <div class="field input">
+                    <label>Hasło (Musi zawierać conajmniej 1 mała literę, 1 dużą literę, znak specjalny i cyfrę. Minimalna długość 8.)</label>
+                    <input type="password" placeholder="Podaj hasło" name="password" id="password">
                 </div>
                 <div class="field image">
                     <label>Wybierz awatar</label>
-                    <input type="file" name="awatar">
+                    <input type="file" name="awatar" id="awatar">
                 </div>
                 <div class="field button">
                     <input type="submit" value="Rejestruj" name="register">
@@ -45,6 +50,6 @@
             </form>
         </section>
     </div>
+    <script src="js/validation.js"></script>
 </body>
-
 </html>
