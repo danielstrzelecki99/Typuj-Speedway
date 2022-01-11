@@ -35,13 +35,8 @@
             }
             $date = new DateTime();
             $date = $date->format('Y-m-d H:i:s');
-            if($bd->select("SELECT id FROM users WHERE userName = '".$dane['userName']."'", ["id"]) != ""){
-                echo "Istnieje użytkownik o takim loginie";
-            }
-            else if($bd->select("SELECT id FROM users WHERE email = '".$dane['email']."'", ["id"]) != ""){
-                echo "Istnieje użytkownik o podanym emailu";
-            }
-            else if($bd->insert("INSERT INTO users VALUES (NULL, '".$dane['userName']."','".$dane['name']."', '".$dane['surname']."', '".$dane['email']."', '".password_hash($dane['password'], PASSWORD_DEFAULT)."', '$date', '$avatarImg')")){
+            
+            if($bd->insert("INSERT INTO users VALUES (NULL, '".$dane['userName']."','".$dane['name']."', '".$dane['surname']."', '".$dane['email']."', '".password_hash($dane['password'], PASSWORD_DEFAULT)."', '$date', '$avatarImg')")){
                 echo "Zarejestrowano pomyślnie";
             }
             else{
