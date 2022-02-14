@@ -1,1 +1,0 @@
-fetch api zaktualizować komunikat i na końcu funkcji sprawdzić czy komunikat jest pusty

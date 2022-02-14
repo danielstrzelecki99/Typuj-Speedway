@@ -38,10 +38,11 @@ function sprawdzRejstracje() {
     var re = /(\.jpg|\.jpeg|\.bmp|\.gif|\.png)$/i;
     if (!re.exec(fileName)) {
         ok = false;
-        error += "awatar "
+        error += "awatar ";
     }
+
     sprawdzBaze(document.getElementById("userName").value, document.getElementById("email").value);
-    if (document.getElementById("registration_error").innerHTML != "") {
+    if (document.getElementById("registration_error").innerHTML == "Istnieje użytkownik o takim loginie" || document.getElementById("registration_error").innerHTML == "Istnieje użytkownik o tpodanym emailu") {
         ok = false;
     }
     if (ok) {
