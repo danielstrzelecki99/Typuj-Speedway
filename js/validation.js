@@ -38,23 +38,42 @@ function sprawdzRejstracje() {
     var re = /(\.jpg|\.jpeg|\.bmp|\.gif|\.png)$/i;
     if (!re.exec(fileName)) {
         ok = false;
-        error += "awatar "
+        error += "awatar ";
     }
 
-    var dane = "Potwierdź następujące dane do rejstracji:\n";
-    dane += "Imię: " + document.getElementById('name').value + "\n";
-    dane += "Nazwisko: " + document.getElementById('surname').value + "\n";
-    dane += "Nazwa użytkownika: " + document.getElementById('userName').value + "\n";
-    dane += "Adres email: " + document.getElementById('email').value + "\n";
-   
+    sprawdzBaze(document.getElementById("userName").value, document.getElementById("email").value);
+    if (document.getElementById("registration_error").innerHTML == "Istnieje użytkownik o takim loginie" || document.getElementById("registration_error").innerHTML == "Istnieje użytkownik o tpodanym emailu") {
+        ok = false;
+    }
     if (ok) {
+        var dane = "Potwierdź następujące dane do rejestracji:\n";
+        dane += "Imię: " + document.getElementById('name').value + "\n";
+        dane += "Nazwisko: " + document.getElementById('surname').value + "\n";
+        dane += "Nazwa użytkownika: " + document.getElementById('userName').value + "\n";
+        dane += "Adres email: " + document.getElementById('email').value + "\n";
         if (window.confirm(dane)) {
             return ok;
         } else return false;
 
-    } else{
+    } else {
         document.getElementById("registration_error").style.display = "block";
         document.getElementById("registration_error").innerHTML = error;
         return false;
+    }
+}
+
+async function sprawdzBaze(login, mail) {
+    const formData = new FormData();
+    formData.append("login", login);
+    formData.append("email", mail);
+
+    const res = await fetch("http://localhost/Typuj-Speedway/sprawdzbaze.php", {
+        method: "post",
+        body: formData
+    })
+    const text = await res.text();
+    if (text != "dobrze") {
+        document.getElementById("registration_error").style.display = "block";
+        document.getElementById("registration_error").innerHTML = text;
     }
 }
