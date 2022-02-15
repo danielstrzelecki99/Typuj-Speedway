@@ -124,16 +124,30 @@ input, .icon{
     width: 100%;
 }
 
+.container .card .typowanie .obok{
+    display: flex;
+    flex-direction: row;
+}
+
 .container .card .typowanie h3{
     margin-top: 20px;
     margin-left: 20px;
+}
+
+.container .card .typowanie button{
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 20%;
+    height: 30px;
+    color: black;
+    cursor: pointer;
 }
 
 .container .card .typowanie input{
     display: inline-block;
     margin-top: 10px;
     margin-left: 20px;
-    width: 15%;
+    width: 50px;
     color: black;
 }
 
@@ -204,7 +218,7 @@ h1 {
 }
 
 
-@media all and (max-width: 968px){
+@media all and (max-width: 1000px){
     nav ul{
         margin-right: 0px;
         float: left;
@@ -244,6 +258,9 @@ h1 {
     }
     [id^=btn]:checked + ul, [id^=btn]:checked + ul ul {
         display: block;
+    }
+    h1{
+        font-size: 20px;
     }
 }
 
