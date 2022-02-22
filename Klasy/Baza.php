@@ -20,7 +20,7 @@ class Baza {
             $ile = $result->num_rows;
             if ($ile == 1) {
                 $row = $result->fetch_object(); //pobierz rekord z użytkownikiem
-                $hash = $row->passwd; //pobierz zahaszowane hasło użytkownika
+                $hash = $row->password; //pobierz zahaszowane hasło użytkownika
                 //sprawdź czy pobrane hasło pasuje do tego z tabeli bazy danych:
                 if (password_verify($passwd, $hash)){
                     $id = $row->id; //jeśli hasła się zgadzają - pobierz id użytkownika

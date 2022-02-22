@@ -13,14 +13,22 @@
 </head>
 
 <body>
+    <?php
+        include_once 'Klasy/Baza.php';
+        include_once 'Klasy/UserManager.php';
+        $db = new Baza("localhost", "root", "", "typuj-speedway");
+        $um = new UserManager();
+        session_start();
+        $user = $um->getLoggedInUser($db, session_id());
+    ?>
     <nav>
-        <div class="logo"><a href="index.html">Speedway Typer 2022</a></div>
+        <div class="logo"><a href="index.php">Speedway Typer 2022</a></div>
         <label for="btn" class="icon">
             <span class="fas fa-align-justify"></span>
         </label>
         <input type="checkbox" id="btn">
         <ul>
-            <li><a href="ranking.html">Ranking</a></li>
+            <li><a href="ranking.php">Ranking</a></li>
             <li>
                 <a href="typowanieEkstraliga.html">Typowanie</a>
                 <ul>
@@ -30,16 +38,43 @@
                 </ul>
             </li>
             <li>
-                <a href="profile.html">Profil</a>
+                <a href="profile.php">Profil</a>
             </li>
             <li>
                 <a href="weather.html">Sprawdź pogodę</a>
             </li>
-            <li>
-                <a href="login.html">Logowanie</a>
-            </li>
+            <?php
+                if($user == -1){
+                    echo "<li>
+                    <a href='login.php'>Logowanie</a>
+                    </li>";
+                }
+                else{
+                    echo "<li>
+                    <a href='scripts/zaloguj.php?akcja=wyloguj'>Wyloguj</a>
+                    </li>";
+                }
+            ?>
         </ul>
     </nav>
+    <div id="menu">
+        <span>Wybierz kolejkę: </span>
+        <a href="#i">I</a>
+        <a href="#ii">II</a>
+        <a href="#iii">III</a>
+        <a href="#iv">IV</a>
+        <a href="#v">V</a>
+        <a href="#vi">VI</a>
+        <a href="#vii">VII</a>
+        <a href="#viii">VIII</a>
+        <a href="#ix">IX</a>
+        <a href="#x">X</a>
+        <a href="#xi">XI</a>
+        <a href="#xii">XII</a>
+        <a href="#xiii">XIII</a>
+        <a href="#xiv">XIV</a>
+    </div>
+    <div id="i"></div>
     <h1>PGE Ekstraliga: kolejka I (08.04.2022 - 10.04.2022)</h1>
     <div class="container">
         <div class="card">
@@ -235,6 +270,7 @@
             </div>
         </div>
     </div>
+    <div id="ii"></div>
     <h1>PGE Ekstraliga: kolejka II (16.04.2022 - 17.04.2022)</h1>
     <div class="container">
         <div class="card">
@@ -430,6 +466,7 @@
             </div>
         </div>
     </div>
+    <div id="iii"></div>
     <h1>PGE Ekstraliga: kolejka III (22.04.2022 - 24.04.2022)</h1>
     <div class="container">
         <div class="card">
@@ -625,6 +662,7 @@
             </div>
         </div>
     </div>
+    <div id="iv"></div>
     <h1>PGE Ekstraliga: kolejka IV (29.04.2022 - 01.05.2022)</h1>
     <div class="container">
         <div class="card">
@@ -820,6 +858,7 @@
             </div>
         </div>
     </div>
+    <div id="v"></div>
     <h1>PGE Ekstraliga: kolejka V (06.05.2022 - 08.05.2022)</h1>
     <div class="container">
         <div class="card">
@@ -1015,6 +1054,7 @@
             </div>
         </div>
     </div>
+    <div id="vi"></div>
     <h1>PGE Ekstraliga: kolejka VI (20.05.2022 - 22.05.2022)</h1>
     <div class="container">
         <div class="card">
@@ -1210,6 +1250,7 @@
             </div>
         </div>
     </div>
+    <div id="vii"></div>
     <h1>PGE Ekstraliga: kolejka VII (03.06.2022 - 05.06.2022)</h1>
     <div class="container">
         <div class="card">
@@ -1405,6 +1446,7 @@
             </div>
         </div>
     </div>
+    <div id="viii"></div>
     <h1>PGE Ekstraliga: kolejka VIII (10.06.2022 - 12.06.2022)</h1>
     <div class="container">
         <div class="card">
@@ -1600,6 +1642,7 @@
             </div>
         </div>
     </div>
+    <div id="ix"></div>
     <h1>PGE Ekstraliga: kolejka IX (17.06.2022 - 19.06.2022)</h1>
     <div class="container">
         <div class="card">
@@ -1795,6 +1838,7 @@
             </div>
         </div>
     </div>
+    <div id="x"></div>
     <h1>PGE Ekstraliga: kolejka X (24.06.2022 - 26.06.2022)</h1>
     <div class="container">
         <div class="card">
@@ -1990,6 +2034,7 @@
             </div>
         </div>
     </div>
+    <div id="xi"></div>
     <h1>PGE Ekstraliga: kolejka XI (01.07.2022 - 03.07.2022)</h1>
     <div class="container">
         <div class="card">
@@ -2185,6 +2230,7 @@
             </div>
         </div>
     </div>
+    <div id="xii"></div>
     <h1>PGE Ekstraliga: kolejka XII (15.07.2022 - 17.07.2022)</h1>
     <div class="container">
         <div class="card">
@@ -2380,6 +2426,7 @@
             </div>
         </div>
     </div>
+    <div id="xiii"></div>
     <h1>PGE Ekstraliga: kolejka XIII (22.07.2022 - 24.07.2022)</h1>
     <div class="container">
         <div class="card">
@@ -2575,6 +2622,7 @@
             </div>
         </div>
     </div>
+    <div id="xiv"></div>
     <h1>PGE Ekstraliga: kolejka XIV (05.08.2022 - 07.08.2022)</h1>
     <div class="container">
         <div class="card">

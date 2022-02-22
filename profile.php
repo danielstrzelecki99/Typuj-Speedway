@@ -12,8 +12,16 @@
 </head>
 
 <body>
+    <?php
+        include_once 'Klasy/Baza.php';
+        include_once 'Klasy/UserManager.php';
+        $db = new Baza("localhost", "root", "", "typuj-speedway");
+        $um = new UserManager();
+        session_start();
+        $user = $um->getLoggedInUser($db, session_id());
+    ?>
     <nav>
-        <div class="logo"><a href="index.html">Speedway Typer 2022</a></div>
+        <div class="logo"><a href="index.php">Speedway Typer 2022</a></div>
         <label for="btn" class="icon">
             <span class="fab fa-accessible-icon"></span>
         </label>
@@ -34,21 +42,21 @@
             <li>
                 <a href="weather.html">Sprawdź pogodę</a>
             </li>
-            <li>
-                <a href="login.html">Logowanie</a>
-            </li>
+            <?php
+                if($user == -1){
+                    echo "<li>
+                    <a href='login.php'>Logowanie</a>
+                    </li>";
+                }
+                else{
+                    echo "<li>
+                    <a href='scripts/zaloguj.php?akcja=wyloguj'>Wyloguj</a>
+                    </li>";
+                }
+            ?>
         </ul>
     </nav>
-    <div class="banner">
-        <div class="content">
-            <h1>Speedway Typer 2022</h1>
-            <p>Aby wziąć udział w typowianiu musisz być zalogowany. Jeśli nie masz konta zarejestruj.</p>
-            <div>
-                <button type="button" onclick="location.href='login.html';">Logowanie</button>
-                <button type="button" onclick="location.href='registration.html';">Rejestracja</button>
-            </div>
-        </div>
-    </div>
+    <h1>Profil</h1>
 </body>
 
 </html>
