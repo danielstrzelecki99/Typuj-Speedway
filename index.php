@@ -29,9 +29,9 @@
         <ul>
             <li><a href="ranking.php">Ranking</a></li>
             <li>
-                <a href="typowanieEkstraliga.html">Typowanie</a>
+                <a href="typowanieEkstraliga.php">Typowanie</a>
                 <ul>
-                    <li><a href="typowanieEkstraliga.html">PGE Ekstraliga</a></li>
+                    <li><a href="typowanieEkstraliga.php">PGE Ekstraliga</a></li>
                     <li><a href="typowanie1liga.html">I liga żużlowa</a></li>
                     <li><a href="typowanie2liga.html">II liga żużlowa</a></li>
                 </ul>
