@@ -1,5 +1,5 @@
 <?php
-    include_once("Klasy/Baza.php");
+    include_once("../Klasy/Baza.php");
     $bd = new Baza("localhost", "root", "", "typuj-speedway");
     if(filter_input(INPUT_POST, "register")){
         $args = [
@@ -38,6 +38,7 @@
             
             if($bd->insert("INSERT INTO users VALUES (NULL, '".$dane['userName']."','".$dane['name']."', '".$dane['surname']."', '".$dane['email']."', '".password_hash($dane['password'], PASSWORD_DEFAULT)."', '$date', '$avatarImg')")){
                 echo "Zarejestrowano pomyślnie";
+                header("Location: ../login.php?status=logged");
             }
             else{
                 echo "Błąd rejestracji!";
@@ -63,3 +64,10 @@ UNIQUE KEY `userName`
 (`userName`,`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 AUTO_INCREMENT=1 ; -->
+
+<!-- CREATE TABLE IF NOT EXISTS `logged_in_users` (
+`sessionId` varchar(100) NOT NULL,
+`userId` int(11) NOT NULL,
+`lastUpdate` datetime NOT NULL,
+PRIMARY KEY (`sessionId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8; -->

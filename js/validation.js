@@ -41,7 +41,6 @@ function sprawdzRejstracje() {
         error += "awatar ";
     }
 
-    sprawdzBaze(document.getElementById("userName").value, document.getElementById("email").value);
     if (document.getElementById("registration_error").innerHTML == "Istnieje użytkownik o takim loginie" || document.getElementById("registration_error").innerHTML == "Istnieje użytkownik o tpodanym emailu") {
         ok = false;
     }
@@ -59,21 +58,5 @@ function sprawdzRejstracje() {
         document.getElementById("registration_error").style.display = "block";
         document.getElementById("registration_error").innerHTML = error;
         return false;
-    }
-}
-
-async function sprawdzBaze(login, mail) {
-    const formData = new FormData();
-    formData.append("login", login);
-    formData.append("email", mail);
-
-    const res = await fetch("http://localhost/Typuj-Speedway/sprawdzbaze.php", {
-        method: "post",
-        body: formData
-    })
-    const text = await res.text();
-    if (text != "dobrze") {
-        document.getElementById("registration_error").style.display = "block";
-        document.getElementById("registration_error").innerHTML = text;
     }
 }
