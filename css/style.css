@@ -6,7 +6,8 @@
     box-sizing: border-box;
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
-    ;
+    color: white;
+    
 }
 
 body {
@@ -15,10 +16,6 @@ body {
     justify-content: center;
     min-height: 100vh;
     background-color: #262626;
-}
-
-section header {
-    color: white;
 }
 
 .wrapper {
@@ -36,6 +33,7 @@ section header {
     font-weight: 600;
     padding-bottom: 10px;
     border-bottom: 2px solid #262626;
+    color: #8F8EBF;
 }
 
 .form form {
@@ -120,3 +118,4 @@ form .user_name_details .field:last-child {
 .form .link a:hover {
     text-decoration: underline;
 }
+
