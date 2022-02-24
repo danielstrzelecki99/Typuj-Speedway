@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/styleEkstraliga.css">
     <link rel="stylesheet" href="css/all.min.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
+    
+    
 </head>
 
 <body>
@@ -21,6 +23,9 @@
         session_start();
         $user = $um->getLoggedInUser($db, session_id());
     ?>
+    <button id="scrollup">
+        <i class="fas fa-angle-double-up"></i>
+    </button>
     <nav>
         <div class="logo"><a href="index.php">Speedway Typer 2022</a></div>
         <label for="btn" class="icon">
@@ -2818,7 +2823,7 @@
             </div>
         </div>
     </div>
-
+<script src="js/scrollup.js"></script>
 </body>
 
 </html>
